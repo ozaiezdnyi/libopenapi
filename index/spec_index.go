@@ -2012,9 +2012,7 @@ func (index *SpecIndex) performExternalLookup(uri []string, componentId string,
 	lookupFunction ExternalLookupFunction, parent *yaml.Node,
 ) *Reference {
 	if len(uri) > 0 {
-
 		externalSpecIndex := index.externalSpecIndex[uri[0]]
-
 		if externalSpecIndex == nil {
 			_, newRoot, err := lookupFunction(componentId)
 			if err != nil {
@@ -2030,7 +2028,6 @@ func (index *SpecIndex) performExternalLookup(uri []string, componentId string,
 			// cool, cool, lets index this spec also. This is a recursive action and will keep going
 			// until all remote references have been found.
 			newIndex := index.createNestedIndex(newRoot, uri[0])
-
 			index.externalSpecIndex[uri[0]] = newIndex
 			externalSpecIndex = newIndex
 		}
@@ -2218,7 +2215,6 @@ func (index *SpecIndex) lookupRemoteReference(ref string) (*yaml.Node, *yaml.Nod
 	uri := strings.Split(ref, "#")
 
 	remotePath := index.buildReferencePath(uri[0])
-
 	var parsedRemoteDocument *yaml.Node
 	if index.seenRemoteSources[remotePath] != nil {
 		parsedRemoteDocument = index.seenRemoteSources[uri[0]]

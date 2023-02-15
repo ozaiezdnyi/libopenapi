@@ -26,6 +26,7 @@ func (options *Options) SetSpecPath(specPath string) {
 	options.referenceBasePath = strings.TrimSuffix(specPath, partAfterLastSlash)
 }
 
+// Returns base path that can be used for resolving relative references.
 func (options *Options) GetReferenceBasePath() string {
 	return options.referenceBasePath
 }
